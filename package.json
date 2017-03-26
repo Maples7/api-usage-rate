@@ -1,0 +1,28 @@
+{
+  "name": "api-usage-rate",
+  "version": "0.0.1",
+  "description": "An Express/Connect-based middleware to trace usage rate of APIs and show them in real time with great visualization tools.",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint ./ --fix"
+  },
+  "repository": "git@github.com:Maples7/api-usage-rate.git",
+  "keywords": [
+    "api",
+    "api-usage-rate",
+    "express",
+    "middleware",
+    "real-time",
+    "data visualization"
+  ],
+  "author": "Maples7 <maples7.com>",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^3.18.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.3"
+  }
+}
