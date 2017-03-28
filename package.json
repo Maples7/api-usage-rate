@@ -1,10 +1,17 @@
 {
   "name": "api-usage-rate",
   "version": "0.0.1",
-  "description": "An Express/Connect-based middleware to trace usage rate of APIs and show them in real time with great visualization tools.",
+  "description": "An Express-based middleware to trace usage rate of APIs and show them in real time with great visualization tools.",
   "main": "index.js",
   "scripts": {
+    "test": "nyc ava",
     "lint": "eslint ./ --fix"
+  },
+  "nyc": {
+    "exclude": [
+      "controllers/*.js",
+      "test.js"
+    ]
   },
   "repository": "git@github.com:Maples7/api-usage-rate.git",
   "keywords": [
@@ -17,12 +24,22 @@
   ],
   "author": "Maples7 <maples7.com>",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "debug": "^2.6.3",
+    "ioredis": "^2.5.0",
+    "lodash": "^4.17.4",
+    "serve-static": "^1.12.1"
+  },
   "devDependencies": {
+    "ava": "^0.18.2",
     "eslint": "^3.18.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
-    "eslint-plugin-react": "^6.10.3"
+    "eslint-plugin-react": "^6.10.3",
+    "express": "^4.15.2",
+    "express-mount-routes": "^1.0.0",
+    "nyc": "^10.2.0",
+    "supertest": "^3.0.0"
   }
 }
