@@ -4,6 +4,7 @@
 [![npm version](https://badge.fury.io/js/api-usage-rate.svg)](https://badge.fury.io/js/api-usage-rate)           
 [![NPM](https://nodei.co/npm/api-usage-rate.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/api-usage-rate/)
 [![NPM](https://nodei.co/npm-dl/api-usage-rate.png?months=6&height=3)](https://nodei.co/npm/api-usage-rate/)
+
 An Express-based middleware to trace usage rate of APIs and show them in real time with great visualization tools.
 
 ![](api-usage-rate.gif)
@@ -11,14 +12,18 @@ An Express-based middleware to trace usage rate of APIs and show them in real ti
 ## Why?
 I definitely know that you can get the api usage rate of your application through logs, even with some awesome tools such as [ELK](https://www.elastic.co/), but they are too heavy and very high resource-consuming.
 
-So I make this tiny tools.
+So I make this tiny tools. No more, no less, just clearly show you the usage rate of APIs. 
+
+With these data, you can 
+- make your application better by listening to what your users really like
+- remove old code of your app promptly and keep your code is always brandly new
 
 ## Usage
 ### Installation
 `yarn add api-usage-rate` or `npm install api-usage-rate --save`
 
 ### Requirement
-- a running redis service.
+- a running redis service
 
 ### Example
 Talk is cheap, show you the code:
@@ -43,8 +48,8 @@ app.listen(3000, () => {
 });
 ```
 Notes:
-- `app.use(apiRate.record());`: this middleware would record every hits of api in your redis. Key `api-usage-rate` refers a zset who holds number of hits in field `${req.method}:${req.path}` and key `api-hits-counter` holds sum of hits of all APIs. You can check your redis.
-- `apiRate.mouteRoutes(app);`: like the comment in example code says, routes `/api-usage-rate` and `/api-data` can be used once your app is launched.
+- `app.use(apiRate.record());`: this middleware would record every hits of APIs in your redis. Key `api-usage-rate` refers a zset who holds number of hits in field `${req.method}:${req.path}` and key `api-hits-counter` holds sum of hits of all APIs. You can check your redis.
+- `apiRate.mouteRoutes(app);`: like the comment in example code says, routes `/api-usage-rate` and `/api-data` can be used with your browser once your app is launched.
 
 ### API
 1. constructor
@@ -53,11 +58,11 @@ Notes:
 const apiRate = new (require('api-usage-rate'))({
   connectRedis, // Info required to connect to redis, Object or String, default to `undefined`, see https://github.com/luin/ioredis/blob/master/API.md#new-redisport-host-options for more instruction
   ignorePathes, // Array of RegExp, any req.path tested true with RegExp in the array would be ignore, default to `[/^\/api-data*/, /^\/api-usage-rate*/, /js$/, /css$/]`
-  flushdb, // whether run `flushdb` while app is launched, this would flush all api usage data stored in some db of redis, default to false
+  flushdb, // whether run `flushdb` while a new instance of class ApiUsageRate is generated, this would flush all api usage data stored in some db of redis, default to false
 });
 ```
 
-2. `apiRate.record()` takes no parameters.
+2. `apiRate.record()` takes no arguments.
 3. `apiRate.mouteRoutes(app)`: `app = express()`.
 
 You are welcomed to review _test.js_ and _test_page.js_ in this project for more infomation of usage.

@@ -16,5 +16,5 @@ app.listen(3000, () => {
     const id = ~~(Math.random() * 50);
     console.log(id);
     request('http://localhost:3000').get(`/tests/${id}`).then(res => console.log(res.text));
-  }, 157);
+  }, 3000);
 });
