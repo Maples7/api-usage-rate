@@ -12,7 +12,7 @@ An Express-based middleware to trace usage rate of APIs and show them in real ti
 ## Why?
 I definitely know that you can get the api usage rate of your application through logs, even with some awesome tools such as [ELK](https://www.elastic.co/), but they are too heavy and very high resource-consuming.
 
-So I make this tiny tools. No more, no less, just clearly show you the usage rate of APIs. 
+So I make this tiny tool. No more, no less, just clearly show you the usage rate of APIs. 
 
 With these data, you can 
 - make your application better by listening to what your users really like
