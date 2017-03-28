@@ -17,10 +17,11 @@ module.exports = class ApiUsageRate {
    */
   constructor({
     connectRedis,
-    ignorePathes = ['/api-data', '/api-usage-rate']
+    ignorePathes = [/^\/api-data*/, /^\/api-usage-rate*/, /js$/, /css$/],
+    flushdb = false
   } = {}) {
     this.client = new Redis(connectRedis);
-    this.client.flushdb();
+    if (flushdb) this.client.flushdb();
     this.ignorePathes = ignorePathes;
   }
   
@@ -29,7 +30,7 @@ module.exports = class ApiUsageRate {
    */
   record() {
     return (req, res, next) => {
-      if (!_.includes(this.ignorePathes, req.path)) {
+      if (!_.some(this.ignorePathes, tester => tester.test(req.path))) {
         const member = `${req.method}:${req.path}`;
 
         debug(`zincr ${member}...`);

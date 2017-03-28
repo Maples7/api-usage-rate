@@ -10,7 +10,7 @@
   "nyc": {
     "exclude": [
       "controllers/*.js",
-      "test.js"
+      "test*.js"
     ]
   },
   "repository": "git@github.com:Maples7/api-usage-rate.git",

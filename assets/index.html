@@ -5,36 +5,54 @@
   <meta charset="utf-8">
   <title>API Usage Rate</title>
   <!-- 引入 echarts.js -->
-  <script src="//cdn.bootcss.com/echarts/3.4.0/echarts.js"></script>
+  <script src="css/echarts.min.js"></script>
+  <script src="css/jquery-3.2.0.min.js"></script>
+  <script src="css/lodash.core.min.js"></script>
 </head>
 
 <body>
   <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-  <div id="main" style="width: 600px;height:400px;"></div>
+  <div id="main" style="width: 1200px; height:700px; margin: auto; position: absolute; top: 0; left: 0; bottom: 0; right: 0;"></div>
   <script type="text/javascript">
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('main'));
 
-    $.get('data.json').done(function (data) {
-      myChart.setOption({
-        title: {
-          text: 'API Usage Rate'
-        },
-        tooltip: {},
-        legend: {
-          data: ['百分占比']
-        },
-        xAxis: {
-          data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
-        },
-        yAxis: {},
-        series: [{
-          name: '销量',
-          type: 'bar',
-          data: [5, 20, 36, 10, 10, 20]
-        }]
-      });
+    myChart.setOption({
+      title: {
+        text: 'API Usage Rate'
+      },
+      tooltip: {},
+      legend: {
+        data: ['百分占比']
+      },
+      xAxis: {
+        data: []
+      },
+      yAxis: {},
+      series: [{
+        name: '百分占比',
+        type: 'bar',
+        data: []
+      }]
     });
+
+    setInterval(() => {
+      $.get('/api-data').done(function (data) {
+        const count = data.count || 0;
+        const rank = data.rank || [];
+        const xAxisData = _.map(rank, 0);
+        const yAxisData = _.map(rank, item => (item[1] / count * 100).toFixed(2));
+        myChart.setOption({
+          xAxis: {
+            data: xAxisData
+          },
+          series: [{
+            name: '百分占比',
+            data: yAxisData
+          }]
+        });
+      });
+    }, 1000);
   </script>
 </body>
 
