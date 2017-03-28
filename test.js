@@ -13,7 +13,7 @@ function makeApp() {
   return app;
 }
 
-test('GET /tests/1', async t => {
+test('GET /tests/1', async (t) => {
   t.plan(4);
   const app = makeApp();
   await request(app).get('/tests/1');
@@ -26,7 +26,7 @@ test('GET /tests/1', async t => {
   t.true(res.body.rank.length > 0);
 });
 
-test('POST /tests/2', async t => {
+test('POST /tests/2', async (t) => {
   t.plan(4);
   const app = makeApp();
   await request(app).post('/tests/2');
@@ -38,7 +38,7 @@ test('POST /tests/2', async t => {
   t.true(res.body.rank.length > 0);
 });
 
-test('GET /tests/3', async t => {
+test('GET /tests/3', async (t) => {
   t.plan(4);
   const app = makeApp();
   await request(app).get('/tests/3');
@@ -49,8 +49,3 @@ test('GET /tests/3', async t => {
   t.is(typeof +res.body.count, 'number');
   t.true(res.body.rank.length > 0);
 });
-
-
-
-
-

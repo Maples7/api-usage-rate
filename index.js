@@ -1,6 +1,6 @@
 const path = require('path');
 const Redis = require('ioredis');
-const _ = require('lodash')
+const _ = require('lodash');
 const serverStatic = require('serve-static');
 const debug = require('debug')('api-usage-rate');
 
@@ -10,7 +10,7 @@ const counter = 'api-hits-counter';
 module.exports = class ApiUsageRate {
   /**
    * constructor of Class ApiUsageRate
-   * 
+   *
    * @param {Object} [options]
    * @param {Object|String} [options.connectRedis] - Info about connecting to redis
    * @param {Object} [logger=console] - logger
@@ -24,7 +24,7 @@ module.exports = class ApiUsageRate {
     if (flushdb) this.client.flushdb();
     this.ignorePathes = ignorePathes;
   }
-  
+
   /**
    * return an Express middleware who records data of api usage rate
    */
@@ -61,14 +61,14 @@ module.exports = class ApiUsageRate {
    * moute routes for Express:
    * /api-usage-rate: a static page to visualize api usage rate
    * /api-data: JSON data about hits number of APIs
-   * 
+   *
    * @param {Object} app - instance of Express
    */
   mouteRoutes(app) {
     const self = this;
     app.use('/api-usage-rate', serverStatic(path.join(__dirname, 'assets')));
-    app.get('/api-data', (req, res, next) => 
-      self.getData().then(data => {
+    app.get('/api-data', (req, res, next) =>
+      self.getData().then((data) => {
         res.json({
           count: data[0][1],
           rank: _.reverse(_.chunk(data[1][1], 2))
