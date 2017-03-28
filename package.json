@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "nyc ava",
-    "lint": "eslint ./ --fix"
+    "lint": "eslint ./*.js --fix",
+    "coverage": "./node_modules/.bin/nyc report --reporter=text-lcov | ./node_modules/.bin/coveralls"
   },
   "nyc": {
     "exclude": [
       "controllers/*.js",
-      "test.js"
+      "test*.js"
     ]
   },
   "repository": "git@github.com:Maples7/api-usage-rate.git",
@@ -32,6 +33,7 @@
   },
   "devDependencies": {
     "ava": "^0.18.2",
+    "coveralls": "^2.12.0",
     "eslint": "^3.18.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",

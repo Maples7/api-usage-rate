@@ -3,12 +3,17 @@
 {
   "extends": "airbnb",
   "rules": {
-    "no-console": 2,
+    "no-console": 0,
     "max-statements": [2, 50],
     "max-depth": [2, 5],
     "max-nested-callbacks": [2, 3],
     "max-params": [2, 5],
     "complexity": [2, 10],
-    "max-len": [2, 120, 4]
+    "max-len": [2, 120, 4],
+    "comma-dangle": 0,
+    "no-unused-vars": 0,
+    "global-require": 0,
+    "import/no-extraneous-dependencies": 0,
+    "no-bitwise": 0
   }
 }
