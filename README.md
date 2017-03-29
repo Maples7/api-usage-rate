@@ -48,7 +48,7 @@ app.listen(3000, () => {
 });
 ```
 Notes:
-- `app.use(apiRate.record());`: this middleware would record every hits of APIs in your redis. Key `api-usage-rate` refers a zset who holds number of hits in field `${req.method}:${req.path}` and key `api-hits-counter` holds sum of hits of all APIs. You can check your redis.
+- `app.use(apiRate.record());`: this middleware would record every hits of APIs in your redis. Key `api-usage-rate` refers to a zset who holds number of hits in field `${req.method}:${req.path}` and key `api-hits-counter` holds sum of hits of all APIs. You can check your redis.
 - `apiRate.mouteRoutes(app);`: like the comment in example code says, routes `/api-usage-rate` and `/api-data` can be used with your browser once your app is launched.
 
 ### API
