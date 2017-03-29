@@ -58,7 +58,7 @@ Notes:
 const apiRate = new (require('api-usage-rate'))({
   connectRedis, // Info required to connect to redis, Object or String, default to `undefined`, see https://github.com/luin/ioredis/blob/master/API.md#new-redisport-host-options for more instruction
   ignorePathes, // Array of RegExp, any req.path tested true with RegExp in the array would be ignore, default to `[/^\/api-data*/, /^\/api-usage-rate*/, /js$/, /css$/]`
-  flushdb, // whether run `flushdb` while a new instance of class ApiUsageRate is generated, this would flush all api usage data stored in some db of redis, default to false
+  flushdb, // whether delete data stored in key `api-usage-rate` and `api-hits-counter` while a new instance of class ApiUsageRate is generated, default to false. And don't worry, this switch would not affect other data in redis (since v0.1.0)
 });
 ```
 

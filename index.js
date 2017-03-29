@@ -21,7 +21,7 @@ module.exports = class ApiUsageRate {
     flushdb = false
   } = {}) {
     this.client = new Redis(connectRedis);
-    if (flushdb) this.client.flushdb();
+    if (flushdb) this.client.multi().del(key).del(counter).exec();
     this.ignorePathes = ignorePathes;
   }
 

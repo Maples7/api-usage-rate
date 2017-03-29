@@ -3,9 +3,19 @@ const test = require('ava');
 const express = require('express');
 const routes = require('express-mount-routes');
 const request = require('supertest');
-const apiRate = new (require('./index.js'))();
+const ApiRate = require('./index.js');
 
 function makeApp() {
+  const apiRate = new ApiRate();
+  const app = express();
+  app.use(apiRate.record());
+  routes(app, path.join(__dirname, 'controllers'));
+  apiRate.mouteRoutes(app);
+  return app;
+}
+
+function makeAppWithFlushdb() {
+  const apiRate = new ApiRate({ flushdb: true });
   const app = express();
   app.use(apiRate.record());
   routes(app, path.join(__dirname, 'controllers'));
@@ -28,7 +38,7 @@ test('GET /tests/1', async (t) => {
 
 test('POST /tests/2', async (t) => {
   t.plan(4);
-  const app = makeApp();
+  const app = makeAppWithFlushdb();
   await request(app).post('/tests/2');
 
   const res = await request(app).get('/api-data');
