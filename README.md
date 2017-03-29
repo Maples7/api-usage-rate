@@ -65,7 +65,7 @@ const apiRate = new (require('api-usage-rate'))({
 2. `apiRate.record()` takes no arguments.
 3. `apiRate.mouteRoutes(app)`: `app = express()`.
 
-You are welcomed to review _test.js_ and _test_page.js_ in this project for more infomation of usage.
+You are welcomed to review _test.js_ and _test_page.js_ in this project for more information of usage.
 
 ## LICENSE
 [MIT](LICENSE)
