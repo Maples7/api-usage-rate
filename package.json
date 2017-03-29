@@ -1,6 +1,6 @@
 {
   "name": "api-usage-rate",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "An Express-based middleware to trace usage rate of APIs and show them in real time with great visualization tools.",
   "main": "index.js",
   "scripts": {
