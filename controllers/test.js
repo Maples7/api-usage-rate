@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = {
   '/1': (req, res, next) => {
     res.sendStatus(200);

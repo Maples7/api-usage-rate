@@ -1,6 +1,6 @@
 {
   "name": "api-usage-rate",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "An Express-based middleware to trace usage rate of APIs and show them in real time with great visualization tools.",
   "main": "index.js",
   "scripts": {
@@ -43,5 +43,8 @@
     "express-mount-routes": "^1.0.0",
     "nyc": "^10.2.0",
     "supertest": "^3.0.0"
-  }
+  },
+  "engines" : { 
+    "node" : ">=6.1.0" 
+  } 
 }

@@ -1,3 +1,5 @@
+'use strict';
+
 const path = require('path');
 const Redis = require('ioredis');
 const _ = require('lodash');
