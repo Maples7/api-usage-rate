@@ -26,7 +26,7 @@
   "author": "Maples7 <maples7.com>",
   "license": "MIT",
   "dependencies": {
-    "debug": "^2.6.3",
+    "debug": "^3.1.0",
     "ioredis": "^2.5.0",
     "lodash": "^4.17.4",
     "serve-static": "^1.12.1"
